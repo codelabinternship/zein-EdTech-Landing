@@ -1,20 +1,22 @@
-# Use the official Node.js image as a base
 FROM node:20
 
-# Set the working directory inside the container
-WORKDIR /usr/src/app
+# 2. Set the working directory inside the container
+WORKDIR /usr/src/nextjs-app
 
-# Copy the package.json and package-lock.json to install dependencies
+# 3. Copy the package.json and package-lock.json to install dependencies
 COPY package*.json ./
 
-# Install dependencies
-RUN npm install --save --force
+# 4. Install dependencies (including Next.js)
+RUN npm install --force
 
-# Copy the rest of your application code to the container
+# 5. Copy the rest of your application code to the container
 COPY . .
 
-# Expose the port your app will run on
+# 6. Build Next.js application (production build)
+RUN npm run build
+
+# 7. Expose the port your app will run on
 EXPOSE 3000
 
-# Run the application
-CMD ["npm", "run","dev"]
+# 8. Run the application
+CMD ["npm", "start"]
