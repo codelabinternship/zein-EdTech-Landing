@@ -1,0 +1,94 @@
+{
+  "header": {
+    "about": "Hakkımızda",
+    "courses": "Kurslar",
+    "teachers": "Öğretmenler",
+    "telegramBot": "Telegram Bot",
+    "results": "Sonuçlar",
+    "phone": "Telefon"
+  },
+  "hero": {
+    "title": "ZEIN EDTECH",
+    "subtitle": "2013'ten beri yabancı dil öğretiyoruz",
+    "description": "2013 yılında kurulmuş olup, esas olarak dil kursları öğretimi faaliyetlerini yürütmektedir",
+    "enrollButton": "Kursa kaydol",
+    "learnMoreButton": "Daha fazla bilgi"
+  },
+  "about": {
+    "title": "Hakkımızda",
+    "description": "2013'ten beri yabancı dil öğretiyoruz. 2013 yılında kurulmuş olup, esas olarak dil kursları öğretimi faaliyetlerini yürütmektedir",
+    "qualityTitle": "Kaliteli Eğitim",
+    "qualityDesc": "Öğretmenlerimiz uzun yıllara dayanan öğretim deneyimine sahiptir ve modern öğretim yöntemlerini kullanmaktadır.",
+    "diversityTitle": "Dil Çeşitliliği",
+    "diversityDesc": "Rusça, İngilizce, Türkçe, Arapça ve Korece öğrenmek için kurslar sunuyoruz.",
+    "approachTitle": "Bireysel Yaklaşım",
+    "approachDesc": "Her öğrencinin ihtiyaçlarını dikkate alıyoruz ve farklı süre ve zorluk seviyelerinde eğitim programları sunuyoruz."
+  },
+  "courses": {
+    "title": "Kurslarımız",
+    "russian": "Rusça",
+    "english": "İngilizce",
+    "turkish": "Türkçe",
+    "arabic": "Arapça",
+    "korean": "Korece",
+    "levels": "A1'den C2'ye kadar seviyeler, 1 aydan 1 yıla kadar programlar",
+    "basicCourse": "Temel Kurs",
+    "standardCourse": "Standart Kurs",
+    "advancedCourse": "İleri Düzey Kurs",
+    "duration": "Süre",
+    "level": "Seviye",
+    "from": "itibaren",
+    "enrollButton": "Kursa kaydol"
+  },
+  "teachers": {
+    "title": "Öğretmenlerimiz",
+    "experience": "Uzaktan öğretim deneyimi"
+  },
+  "results": {
+    "title": "Öğrenci Sonuçları",
+    "student": "Öğrenci",
+    "course": "Kurs",
+    "level": "Seviye",
+    "score": "Puan"
+  },
+  "telegramBot": {
+    "title": "ZEIN.UZ Telegram Bot",
+    "subtitle": "Çeşitli konuları öğrenmek için interaktif sınavlar",
+    "description": "Eğitim botumuzla bilginizi test edin ve sonuçlarınızı iyileştirin",
+    "openBot": "Botu Aç",
+    "learnMore": "Daha fazla bilgi",
+    "tryBot": "Botu deneyin"
+  },
+  "contactForm": {
+    "title": "Bize Ulaşın",
+    "name": "Adınız",
+    "phone": "Telefon Numarası",
+    "submit": "Gönder",
+    "success": "Mesajınız başarıyla gönderildi!",
+    "error": "Mesajınızı gönderirken bir hata oluştu. Lütfen tekrar deneyin."
+  },
+  "faq": {
+    "title": "Sık Sorulan Sorular",
+    "question1": "Kursların maliyeti nedir?",
+    "answer1": "Kursların maliyeti, seçilen dile, eğitim süresine ve zorluk seviyesine bağlı olarak 250.000 ile   \"Kursların maliyeti, seçilen dile, eğitim süresine ve zorluk seviyesine bağlı olarak 250.000 ile 2.000.000 sum arasında değişmektedir.",
+    "question2": "Eğitim formatı nedir?",
+    "answer2": "Hem çevrimiçi hem de çevrimdışı eğitim formatları sunuyoruz. Çevrimiçi dersler Zoom veya diğer video konferans platformları aracılığıyla yapılmaktadır.",
+    "question3": "İade politikası nedir?",
+    "answer3": "İlk hafta içinde eğitimi bırakmaya karar verirseniz, kursun tam ücretini iade edeceğiz. İlk haftadan sonra para iadesi yapılmaz.",
+    "question4": "Eğitim için hangi platformlar kullanılıyor?",
+    "answer4": "Çevrimiçi öğrenme için Zoom, Google Meet ve interaktif materyallerle kendi eğitim platformumuzu kullanıyoruz."
+  },
+  "contact": {
+    "title": "Bizimle nasıl iletişime geçebilirsiniz?",
+    "phone": "Telefon",
+    "email": "E-posta",
+    "telegram": "Telegram",
+    "admissionTitle": "Kabul prosedürü",
+    "admissionDesc": "Bir kursa kaydolmak için formumuz aracılığıyla çevrimiçi kayıt olmanız veya verilen iletişim bilgilerini kullanarak bizimle iletişime geçmeniz gerekir.",
+    "registerButton": "Çevrimiçi kayıt ol"
+  },
+  "footer": {
+    "socialMedia": "Sosyal medyadayız:",
+    "rights": "Tüm hakları saklıdır."
+  }
+}

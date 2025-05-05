@@ -1,0 +1,105 @@
+{
+  "header": {
+    "about": "Biz haqimizda",
+    "courses": "Kurslar",
+    "teachers": "O'qituvchilar",
+    "telegramBot": "Telegram bot",
+    "results": "Natijalar",
+    "phone": "Telefon"
+  },
+  "hero": {
+    "title": "ZEIN EDTECH",
+    "subtitle": "2013 yildan beri chet tillarini o'rgatamiz",
+    "description": "2013 da tashkil topgan bo'lib asosan til kurslarini o'rgatish bo'yicha faoliyat olib boradi",
+    "enrollButton": "Kursga yozilish",
+    "learnMoreButton": "Batafsil ma'lumot"
+  },
+  "about": {
+    "title": "Biz haqimizda",
+    "description": "2013 yildan beri chet tillarini o'rgatamiz. 2013 da tashkil topgan bo'lib asosan til kurslarini o'rgatish bo'yicha faoliyat olib boradi",
+    "qualityTitle": "Sifatli ta'lim",
+    "qualityDesc": "Bizning o'qituvchilarimiz ko'p yillik tajribaga ega va zamonaviy o'qitish usullaridan foydalanadilar.",
+    "diversityTitle": "Tillar xilma-xilligi",
+    "diversityDesc": "Biz rus, ingliz, turk, arab va koreys tillarini o'rganish bo'yicha kurslar taklif qilamiz.",
+    "approachTitle": "Individual yondashuv",
+    "approachDesc": "Biz har bir talabaning ehtiyojlarini hisobga olamiz va turli davomiylik va qiyinchilik darajasidagi o'quv dasturlarini taklif qilamiz."
+  },
+  "courses": {
+    "title": "Bizning kurslar",
+    "russian": "Rus tili",
+    "english": "Ingliz tili",
+    "turkish": "Turk tili",
+    "arabic": "Arab tili",
+    "korean": "Koreys tili",
+    "levels": "A1 dan C2 gacha darajalar, 1 oydan 1 yilgacha dasturlar",
+    "basicCourse": "Boshlang'ich kurs",
+    "standardCourse": "Standart kurs",
+    "advancedCourse": "Yuqori darajadagi kurs",
+    "duration": "Davomiyligi",
+    "level": "Daraja",
+    "from": "dan",
+    "enrollButton": "Kursga yozilish",
+    "months": "oy",
+    "benefits": "Nima uchun bizning kurslarimizni tanlaysiz",
+    "certifiedTeachers": "Sertifikatlangan o'qituvchilar",
+    "certifiedTeachersDesc": "Bizning o'qituvchilarimiz til o'qitishda ko'p yillik tajribaga ega sertifikatlangan mutaxassislardir.",
+    "modernMaterials": "Zamonaviy materiallar",
+    "modernMaterialsDesc": "Biz samarali o'rganishni ta'minlash uchun eng so'nggi o'quv materiallari va usullaridan foydalanamiz.",
+    "flexibleSchedule": "Moslashuvchan jadval",
+    "flexibleScheduleDesc": "Bizning moslashuvchan dars vaqtlari bilan o'zingizga mos jadval tanlang.",
+    "smallGroups": "Kichik guruhlar",
+    "smallGroupsDesc": "Har bir talabaga individual e'tibor berish uchun sinf hajmini kichik saqlaymiz."
+  },
+  "teachers": {
+    "title": "O'qituvchilarimiz",
+    "experience": "Masofaviy o'qitish tajribasi"
+  },
+  "results": {
+    "title": "O'quvchilar natijalari",
+    "student": "O'quvchi",
+    "course": "Kurs",
+    "level": "Daraja",
+    "score": "Ball",
+    "achievements": "Yutuqlar"
+  },
+  "telegramBot": {
+    "title": "ZEIN.UZ Telegram bot",
+    "subtitle": "Turli fanlarni o'rganish uchun interaktiv viktorinalar",
+    "description": "Bizning ta'lim botimiz bilan bilimingizni tekshiring va natijalaringizni yaxshilang",
+    "openBot": "Botni ochish",
+    "learnMore": "Batafsil ma'lumot",
+    "tryBot": "Botni sinab ko'rish"
+  },
+  "contactForm": {
+    "title": "Biz bilan bog'lanish",
+    "name": "Ismingiz",
+    "phone": "Telefon raqamingiz",
+    "submit": "Yuborish",
+    "success": "Xabaringiz muvaffaqiyatli yuborildi!",
+    "error": "Xabar yuborishda xatolik yuz berdi. Iltimos, qayta urinib ko'ring."
+  },
+  "faq": {
+    "title": "Ko'p so'raladigan savollar",
+    "question1": "Kurslar narxi qancha?",
+    "answer1": "Kurslar narxi tanlangan til, o'qish davomiyligi va qiyinchilik darajasiga qarab 250.000 dan 2.000.000 so'mgacha o'zgaradi.",
+    "question2": "O'qitish formati qanday?",
+    "answer2": "Biz ham onlayn, ham oflayn o'qitish formatlarini taklif qilamiz. Onlayn darslar Zoom yoki boshqa videokonferentsiya platformalari orqali o'tkaziladi.",
+    "question3": "Qaytarish siyosati qanday?",
+    "answer3": "Agar siz birinchi hafta davomida o'qishni to'xtatishga qaror qilsangiz, biz sizga kurs narxini to'liq qaytarib beramiz. Birinchi haftadan keyin pul qaytarilmaydi.",
+    "question4": "O'qitish uchun qanday platformalar ishlatiladi?",
+    "answer4": "Onlayn o'qitish uchun biz Zoom, Google Meet va interaktiv materiallar bilan o'zimizning ta'lim platformamizdan foydalanamiz."
+  },
+  "contact": {
+    "title": "Biz bilan qanday bog'lanish mumkin?",
+    "phone": "Telefon",
+    "email": "Email",
+    "telegram": "Telegram",
+    "admissionTitle": "Qabul tartibi",
+    "admissionDesc": "Kursga yozilish uchun bizning forma orqali onlayn ro'yxatdan o'tishingiz yoki ko'rsatilgan kontaktlar orqali biz bilan bog'lanishingiz kerak.",
+    "registerButton": "Onlayn ro'yxatdan o'tish"
+  },
+  "footer": {
+    "socialMedia": "Ijtimoiy tarmoqlarda biz:",
+    "rights": "Barcha huquqlar himoyalangan."
+  }
+}
