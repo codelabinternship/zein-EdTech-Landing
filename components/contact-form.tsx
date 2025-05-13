@@ -1,41 +1,40 @@
 "use client"
 
-import type React from "react"
-
-import { useState } from "react"
-import { useTranslation } from "react-i18next"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Alert, AlertDescription } from "@/components/ui/alert"
-import { CheckCircle, AlertCircle } from "lucide-react"
+import { useClientRequests } from "@/hooks/useClientRequest"
+import { AlertCircle, CheckCircle } from "lucide-react"
+import React, { useState } from "react"
+import { useTranslation } from "react-i18next"
 
 export default function ContactForm() {
   const { t } = useTranslation()
   const [name, setName] = useState("")
   const [phone, setPhone] = useState("")
-  const [isSubmitting, setIsSubmitting] = useState(false)
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+
+  const { addRequest,isLoading } = useClientRequests()
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsSubmitting(true)
 
-    // Simulate API call
+    setSubmitStatus("idle")
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+      await addRequest({ name, phone_number:phone }) // only fields needed
       setSubmitStatus("success")
       setName("")
       setPhone("")
     } catch (error) {
       setSubmitStatus("error")
-    } finally {
-      setIsSubmitting(false)
-      // Reset status after 5 seconds
-      setTimeout(() => setSubmitStatus("idle"), 5000)
     }
+
+    setTimeout(() => setSubmitStatus("idle"), 5000)
   }
+
+  const isSubmitting = isLoading
 
   return (
     <Card className="w-full max-w-md mx-auto">

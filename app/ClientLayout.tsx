@@ -1,11 +1,12 @@
 "use client"
 
-import type React from "react"
-import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
+import i18n from "@/i18n/config"
+import { QueryProvider } from "@/providers/query-provider"
+import type React from "react"
 import { useEffect } from "react"
 import { I18nextProvider } from "react-i18next"
-import i18n from "@/i18n/config"
+import "./globals.css"
 
 export default function ClientLayout({
   children,
@@ -25,9 +26,13 @@ export default function ClientLayout({
 
   return (
     <I18nextProvider i18n={i18n}>
+       <QueryProvider>
+
       <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
         {children}
       </ThemeProvider>
+       </QueryProvider>
+
     </I18nextProvider>
   )
 }

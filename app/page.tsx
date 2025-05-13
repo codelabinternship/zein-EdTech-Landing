@@ -3,7 +3,6 @@
 import ContactForm from "@/components/contact-form"
 import CoursesShowcase from "@/components/courses-showcase"
 import Header from "@/components/header"
-import TeacherCarousel from "@/components/teacher-carousel"
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -16,6 +15,8 @@ import "../i18n/config"
 
 // Import the new component at the top of the file
 import StudentResultsAlt from "@/components/student-results-alt"
+import { Skeleton } from "@/components/ui/skeleton"
+import { useFAQs } from "@/hooks/useFAQs"
 
 export default function Home() {
   const { t } = useTranslation()
@@ -28,6 +29,12 @@ export default function Home() {
       contactFormRef.current?.scrollIntoView({ behavior: "smooth" })
     }, 100)
   }
+
+  const {
+    data: faqs,
+    isLoading,
+  } = useFAQs()
+
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -123,7 +130,7 @@ export default function Home() {
       </section>
 
       {/* Teachers Section */}
-      <section id="teachers" className="py-16 bg-gray-50 scroll-mt-20">
+      {/* <section id="teachers" className="py-16 bg-gray-50 scroll-mt-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-[#010088] mb-4">{t("teachers.title")}</h2>
@@ -132,7 +139,7 @@ export default function Home() {
 
           <TeacherCarousel />
         </div>
-      </section>
+      </section> */}
 
       {/* Student Results Section */}
       <section id="results" className="py-16 scroll-mt-20">
@@ -169,7 +176,8 @@ export default function Home() {
                 </Button>
               </div>
             </div>
-            <div className="flex-1">
+
+            <div  className="flex-1">
               <div className="bg-white p-4 rounded-lg shadow-lg">
                 <div className="bg-[#010088] text-white p-3 rounded-t-lg flex items-center gap-2">
                   <MessageCircle size={20} />
@@ -248,29 +256,27 @@ export default function Home() {
             <div className="w-20 h-1 bg-[#7635E9] mx-auto mb-6"></div>
           </div>
 
-          <div className="max-w-3xl mx-auto">
-            <Accordion type="single" collapsible className="w-full">
-              <AccordionItem value="item-1">
-                <AccordionTrigger>{t("faq.question1")}</AccordionTrigger>
-                <AccordionContent>{t("faq.answer1")}</AccordionContent>
+           <div className="max-w-3xl mx-auto">
+      <Accordion type="single" collapsible className="w-full">
+        {isLoading
+          ? Array.from({ length: 3 }).map((_, index) => (
+              <AccordionItem key={index} value={`loading-${index}`}>
+                <AccordionTrigger>
+                  <Skeleton className="h-5 w-48" />
+                </AccordionTrigger>
+                <AccordionContent>
+                  <Skeleton className="h-20 w-full" />
+                </AccordionContent>
               </AccordionItem>
-
-              <AccordionItem value="item-2">
-                <AccordionTrigger>{t("faq.question2")}</AccordionTrigger>
-                <AccordionContent>{t("faq.answer2")}</AccordionContent>
+            ))
+          : faqs?.map((faq) => (
+              <AccordionItem key={faq.id} value={String(faq.id)}>
+                <AccordionTrigger>{faq.question}</AccordionTrigger>
+                <AccordionContent>{faq.answer}</AccordionContent>
               </AccordionItem>
-
-              <AccordionItem value="item-3">
-                <AccordionTrigger>{t("faq.question3")}</AccordionTrigger>
-                <AccordionContent>{t("faq.answer3")}</AccordionContent>
-              </AccordionItem>
-
-              <AccordionItem value="item-4">
-                <AccordionTrigger>{t("faq.question4")}</AccordionTrigger>
-                <AccordionContent>{t("faq.answer4")}</AccordionContent>
-              </AccordionItem>
-            </Accordion>
-          </div>
+            ))}
+      </Accordion>
+    </div>
         </div>
       </section>
 

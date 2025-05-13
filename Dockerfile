@@ -1,22 +1,22 @@
 FROM node:20
 
-# 2. Set the working directory inside the container
-WORKDIR /usr/src/nextjs-app
+# 1. Ishchi katalog
+WORKDIR /usr/src/app
 
-# 3. Copy the package.json and package-lock.json to install dependencies
+# 2. package.json va lock faylni copy
 COPY package*.json ./
 
-# 4. Install dependencies (including Next.js)
-RUN npm install --force
+# 3. Paketlarni o‘rnatish
+RUN npm install
 
-# 5. Copy the rest of your application code to the container
+# 4. Qolgan kodlarni copy qilish
 COPY . .
 
-# 6. Build Next.js application (production build)
+# 5. Production build
 RUN npm run build
 
-# 7. Expose the port your app will run on
+# 6. Port ochish
 EXPOSE 3000
 
-# 8. Run the application
+# 7. Appni start qilish
 CMD ["npm", "start"]
