@@ -19,7 +19,7 @@ import { Skeleton } from "@/components/ui/skeleton"
 import { useFAQs } from "@/hooks/useFAQs"
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t ,i18n} = useTranslation()
   const [showContactForm, setShowContactForm] = useState(false)
   const contactFormRef = useRef<HTMLDivElement>(null)
 
@@ -33,7 +33,7 @@ export default function Home() {
   const {
     data: faqs,
     isLoading,
-  } = useFAQs()
+  } = useFAQs(i18n.language)
 
 
   return (
@@ -46,28 +46,27 @@ export default function Home() {
         <div className="container mx-auto px-4 py-8 md:py-16">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="flex-1 space-y-6">
-              <div className="flex items-center gap-4">
-                <Image src="/logo.png" alt="ZEIN Logo" width={80} height={80} className="rounded-full bg-white p-2" />
-                <h1 className="text-3xl md:text-5xl font-bold">{t("hero.title")}</h1>
-              </div>
-              <p className="text-xl md:text-2xl">{t("hero.subtitle")}</p>
+
+              <p className="text-3xl md:text-5xl font-bold">{t("hero.subtitle")}</p>
+              <p className="text-3xl md:text-5xl font-bold">{t("hero.subtitle_name")}</p>
               <p className="text-lg opacity-80">{t("hero.description")}</p>
               <div className="flex flex-row gap-4">
                 <Button className="bg-[#7635E9] hover:bg-[#6525D9]" onClick={scrollToContactForm}>
                   {t("hero.enrollButton")}
                 </Button>
+               <Link href={"#contact"}>
                 <Button variant="outline" className="text-white bg-transparent border-white hover:bg-white/10 hover:text-white">
-                  {t("hero.learnMoreButton")}
-                </Button>
+                  {t("hero.contact")}
+                </Button></Link>
               </div>
             </div>
             <div className="flex-1">
               <Image
-                src="/hero-image.png"
+                src="/logo.webp"
                 alt="Students learning"
                 width={500}
                 height={400}
-                className="rounded-lg shadow-lg"
+                className="rounded-lg shadow-lg bg-white/90"
               />
             </div>
           </div>
@@ -281,7 +280,7 @@ export default function Home() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-16 bg-[#010088] text-white">
+      <section id="contact" className="py-16 bg-[#010088] text-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold mb-4">{t("contact.title")}</h2>
@@ -360,7 +359,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
-              <Image src="/logo.png" alt="ZEIN Logo" width={40} height={40} className="rounded-full bg-white p-1" />
+              <Image src="/logo.webp" alt="ZEIN Logo" width={40} height={40} className="rounded-full bg-white p-1" />
               <span className="font-bold">ZEIN EDTECH</span>
             </div>
             <p className="text-sm text-gray-400">

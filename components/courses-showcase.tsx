@@ -23,12 +23,12 @@ export default function CoursesShowcase({ onEnrollClick }: CourseProps) {
     { id: "korean", name: t("courses.korean"), icon: "🇰🇷", color: "bg-blue-100" },
   ]
 
-  const courseData = {
+  const courseData = {  
     basic: {
       title: t("courses.basicCourse"),
       duration: "1-3",
       level: "A1-A2",
-      price: "250.000",
+      price: "300.000",
       features: [
         "Individual approach",
         "Learning materials included",
@@ -40,7 +40,7 @@ export default function CoursesShowcase({ onEnrollClick }: CourseProps) {
       title: t("courses.standardCourse"),
       duration: "3-6",
       level: "B1-B2",
-      price: "500.000",
+      price: "600.000",
       features: [
         "Individual approach",
         "Learning materials included",

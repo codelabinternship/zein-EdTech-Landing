@@ -1,38 +1,32 @@
 import api from "@/lib/axios";
-import {
-  useQuery,
-  useQueryClient
-} from "@tanstack/react-query";
-
+import { useQuery } from "@tanstack/react-query";
 
 export interface FAQ {
-  id: number
-  question: string
-  answer: string
+  id: number;
+  question: string;
+  answer: string;
   order: number;
-  created_at?:string
+  created_at?: string;
 }
 
-const fetchFAQs = async (): Promise<FAQ[]> => {
-  const res = await api.get("/faq/")
-  return res.data
-}
-
-export function useFAQs() {
-  const queryClient = useQueryClient()
-  // Fetching
+export function useFAQs(language: string) {
   const {
     data,
     isLoading,
     error,
   } = useQuery<FAQ[], Error>({
-    queryKey: ["faq"],
-    queryFn: fetchFAQs,
-  })
+    queryKey: ["faq", language],
+    queryFn: async () => {
+      const res = await api.get("/faqs/", {
+        params: { lang: language },
+      });
+      return res.data[language]; // backend returns { lang: [...] }
+    },
+  });
+
   return {
     data,
     isLoading,
     error,
-  }
+  };
 }
-

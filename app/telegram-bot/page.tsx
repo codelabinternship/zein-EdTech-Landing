@@ -1,7 +1,7 @@
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { BookOpen, MessageCircle, CheckCircle, HelpCircle } from "lucide-react"
+import { BookOpen, CheckCircle, HelpCircle, MessageCircle } from "lucide-react"
+import Image from "next/image"
 import Link from "next/link"
 
 export default function TelegramBotPage() {
@@ -283,7 +283,7 @@ export default function TelegramBotPage() {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="flex items-center gap-2 mb-4 md:mb-0">
-              <Image src="/logo.png" alt="ZEIN Logo" width={40} height={40} className="rounded-full bg-white p-1" />
+              <Image src="/logo.webp" alt="ZEIN Logo" width={40} height={40} className="rounded-full bg-white p-1" />
               <span className="font-bold">ZEIN EDTECH</span>
             </div>
             <div className="flex gap-4">

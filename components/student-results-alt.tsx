@@ -1,10 +1,122 @@
+// "use client"
+
+// import { Badge } from "@/components/ui/badge"
+// import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+// import { useExamResult } from "@/hooks/useResults"
+// import { Award, Star, Trophy } from "lucide-react"
+// import Image from "next/image"
+// import { useTranslation } from "react-i18next"
+
+// interface Student {
+//   name: string
+//   course: string
+//   level: string
+//   score: number
+//   examType: string
+//   image: string
+//   achievements?: string[]
+// }
+
+// export default function StudentResultsAlt() {
+//   const { t } = useTranslation()
+
+//  const {data:results}=useExamResult()
+//   return (
+//     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+//       {results?.map((student, index) => (
+//         <Card key={index} className="overflow-hidden hover:shadow-lg transition-shadow duration-300">
+//           <CardHeader className="pb-2">
+//             <div className="flex justify-between items-center">
+//               <div className="flex items-center gap-2">
+//                 <div className="bg-[#7635E9] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
+//                   {index + 1}
+//                 </div>
+//                 <CardTitle className="text-lg">{student.user}</CardTitle>
+//               </div>
+//               {index < 3 && (
+//                 <Trophy
+//                   className={`h-6 w-6 ${
+//                     index === 0 ? "text-yellow-500" : index === 1 ? "text-gray-400" : "text-amber-700"
+//                   }`}
+//                 />
+//               )}
+//             </div>
+//           </CardHeader>
+//           <CardContent className="pt-0">
+//             <div className="flex flex-col md:flex-row gap-4">
+//               {/* Student image - HORIZONTAL LAYOUT */}
+//               <div className="w-full md:w-1/2 h-56 md:h-auto relative rounded-lg overflow-hidden">
+//                 <Image
+//                   src={student.image || "/placeholder.svg"}
+//                   alt={student.user}
+//                   fill
+//                   className="object-contain"
+//                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+//                 />
+//               </div>
+
+//               {/* Student details */}
+//               <div className="w-full md:w-1/2">
+//                 <div className="mb-3">
+//                   <div className="flex flex-wrap gap-2 mb-2">
+//                     <Badge variant="outline">{student.language}</Badge>
+//                     <Badge variant="outline">
+//                       {t("results.level")}: {student.proficiency_level}
+//                     </Badge>
+//                   </div>
+//                   <div className="flex items-center gap-2">
+//                     <Award className="h-5 w-5 text-[#7635E9]" />
+//                     <Badge className="bg-[#7635E9]">
+//                       {student.exam_type}: {student.exam_score}
+//                     </Badge>
+//                   </div>
+//                 </div>
+
+//                 {/* Achievements */}
+//                <div className="mt-3">
+//                 <h4 className="text-sm font-semibold text-gray-500 mb-2">{t("results.achievements")}:</h4>
+//                 <div className="space-y-1">
+//                   <div className="flex items-center text-sm">
+//                     <Star className="h-3 w-3 text-[#7635E9] mr-2" />
+//                     <span>{t("results.reading")}: {student.reading_score}</span>
+//                   </div>
+//                   <div className="flex items-center text-sm">
+//                     <Star className="h-3 w-3 text-[#7635E9] mr-2" />
+//                     <span>{t("results.grammar")}: {student.grammar_score}</span>
+//                   </div>
+//                   <div className="flex items-center text-sm">
+//                     <Star className="h-3 w-3 text-[#7635E9] mr-2" />
+//                     <span>{t("results.vocabulary")}: {student.vocabulary_score}</span>
+//                   </div>
+//                   <div className="flex items-center text-sm">
+//                     <Star className="h-3 w-3 text-[#7635E9] mr-2" />
+//                     <span>{t("results.listening")}: {student.listening_score}</span>
+//                   </div>
+//                   <div className="flex items-center text-sm">
+//                     <Star className="h-3 w-3 text-[#7635E9] mr-2" />
+//                     <span>{t("results.speaking")}: {student.speaking_score}</span>
+//                   </div>
+//                   <div className="flex items-center text-sm">
+//                     <Star className="h-3 w-3 text-[#7635E9] mr-2" />
+//                     <span>{t("results.writing")}: {student.writing_score}</span>
+//                   </div>
+//                 </div>
+//                 </div>
+//               </div>
+//             </div>
+//           </CardContent>
+//         </Card>
+//       ))}
+//     </div>
+//   )
+// }
 "use client"
 
-import { useTranslation } from "react-i18next"
-import Image from "next/image"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Trophy, Star, Award } from "lucide-react"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Award, Star, Trophy } from "lucide-react"
+import Image from "next/image"
+import { useTranslation } from "react-i18next"
 
 interface Student {
   name: string

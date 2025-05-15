@@ -2,10 +2,11 @@
 
 # dependencies
 /node_modules
+/node_modules.zip
 
 # next.js
-/.next/
 /out/
+.next/
 
 # production
 /build

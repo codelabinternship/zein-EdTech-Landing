@@ -9,12 +9,8 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 const languages = [
-  { code: "ru", name: "Русский", flag: "🇷🇺" },
-  { code: "uz", name: "O'zbek", flag: "🇺🇿" },
-  { code: "en", name: "English", flag: "🇬🇧" },
-  { code: "ar", name: "العربية", flag: "🇸🇦" },
-  { code: "tr", name: "Türkçe", flag: "🇹🇷" },
-  { code: "ko", name: "한국어", flag: "🇰🇷" },
+  { code: "ru", name: "Русский", flag: "https://flagcdn.com/w40/ru.png" },
+  { code: "uz", name: "O'zbek", flag: "https://flagcdn.com/w40/uz.png" },
 ]
 
 export default function Header() {
@@ -53,7 +49,7 @@ export default function Header() {
           {/* Left: Logo */}
           <div className="flex items-center">
             <Link href="/" className="flex items-center">
-              <Image src="/logo.png" alt="ZEIN Logo" width={60} height={60} className="rounded-full bg-white p-1" />
+              <Image src="/logo.webp" alt="ZEIN Logo" width={60} height={60} className="rounded-full bg-white p-1" />
             </Link>
           </div>
 
@@ -68,11 +64,6 @@ export default function Header() {
               <li>
                 <Link href="#courses" className="text-gray-700 hover:text-[#7635E9]">
                   {t("header.courses")}
-                </Link>
-              </li>
-              <li>
-                <Link href="#teachers" className="text-gray-700 hover:text-[#7635E9]">
-                  {t("header.teachers")}
                 </Link>
               </li>
               <li>
@@ -98,7 +89,7 @@ export default function Header() {
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex items-center space-x-1 px-2">
-                  <span>{currentLanguage.flag}</span>
+                 <Image className="rounded-sm" src={currentLanguage.flag} alt={currentLanguage.code} width={24} height={16} />
                   <span className="hidden md:inline">{currentLanguage.name}</span>
                   <ChevronDown className="h-4 w-4" />
                 </Button>
@@ -110,7 +101,7 @@ export default function Header() {
                     onClick={() => changeLanguage(lang.code)}
                     className="cursor-pointer"
                   >
-                    <span className="mr-2">{lang.flag}</span>
+                   <Image className="rounded-sm" src={lang.flag} alt={lang.code} width={24} height={16} />
                     {lang.name}
                   </DropdownMenuItem>
                 ))}

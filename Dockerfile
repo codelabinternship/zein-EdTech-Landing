@@ -7,7 +7,7 @@ WORKDIR /usr/src/app
 COPY package*.json ./
 
 # 3. Paketlarni o‘rnatish
-RUN npm install
+RUN npm install --production --save --force
 
 # 4. Qolgan kodlarni copy qilish
 COPY . .
