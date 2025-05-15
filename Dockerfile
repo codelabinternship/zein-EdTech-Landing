@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 
 # 2. package.json va lock faylni copy
 COPY package*.json ./
-
+COPY package-lock.json ./
 # 3. Paketlarni o‘rnatish
 RUN npm install --production --save --force
 
