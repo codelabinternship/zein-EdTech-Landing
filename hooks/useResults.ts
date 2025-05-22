@@ -5,17 +5,13 @@ export interface ExamResult {
   id: number;
   user: string;
   language: string;
-  proficiency_level: 'A1' | 'A2' | 'B1' | 'B2' | 'C1' | 'C2';
-  exam_type: 'TOEFL' | 'IELTS' | 'TORFL' | 'TOPIK' | 'TOMER' | 'ALPT';
-  exam_score: string;
-  reading_score: string;
-  grammar_score: string;
-  vocabulary_score: string;
-  listening_score: string;
-  speaking_score: string;
-  writing_score: string;
+  proficiency_level: string;
+  exam_type: string;
+  exam_score: number;
   created_at: string;
   updated_at: string;
+  details:[{component:string,score:number}],
+  image:string
 }
 
 export function useExamResult() {
@@ -26,7 +22,7 @@ export function useExamResult() {
   } = useQuery<ExamResult[], Error>({
     queryKey: ["faq"],
     queryFn: async () => {
-      const res = await api.get("/results/");
+      const res = await api.get("/exam-results/");
       return res.data
     },
   });

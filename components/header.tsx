@@ -13,7 +13,7 @@ const languages = [
   { code: "uz", name: "O'zbek", flag: "https://flagcdn.com/w40/uz.png" },
 ]
 
-export default function Header() {
+export default function Header({ phone }: { phone: string }) {
   const { t, i18n } = useTranslation()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [currentLanguage, setCurrentLanguage] = useState(languages[0])
@@ -40,9 +40,8 @@ export default function Header() {
 
   return (
     <header
-      className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? "bg-white shadow-md" : "bg-transparent"
-      }`}
+      className={`sticky top-0 z-50 w-full transition-all duration-300 ${isScrolled ? "bg-white shadow-md" : "bg-transparent"
+        }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16 md:h-20">
@@ -83,13 +82,13 @@ export default function Header() {
           <div className="flex items-center space-x-4">
             <a href="tel:+998712050772" className="hidden md:flex items-center text-sm">
               <Phone className="h-4 w-4 mr-2" />
-              +998 71 205 07 72
+              {phone}
             </a>
 
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex items-center space-x-1 px-2">
-                 <Image className="rounded-sm" src={currentLanguage.flag} alt={currentLanguage.code} width={24} height={16} />
+                  <Image className="rounded-sm" src={currentLanguage.flag} alt={currentLanguage.code} width={24} height={16} />
                   <span className="hidden md:inline">{currentLanguage.name}</span>
                   <ChevronDown className="h-4 w-4" />
                 </Button>
@@ -101,7 +100,7 @@ export default function Header() {
                     onClick={() => changeLanguage(lang.code)}
                     className="cursor-pointer"
                   >
-                   <Image className="rounded-sm" src={lang.flag} alt={lang.code} width={24} height={16} />
+                    <Image className="rounded-sm" src={lang.flag} alt={lang.code} width={24} height={16} />
                     {lang.name}
                   </DropdownMenuItem>
                 ))}

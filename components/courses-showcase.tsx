@@ -2,9 +2,11 @@
 
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
+import { Skeleton } from "@/components/ui/skeleton"
+import { useCourses } from "@/hooks/useCourses"
 import { motion } from "framer-motion"
 import { Award, BookOpen, Check, ChevronRight, Clock, Users } from "lucide-react"
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 interface CourseProps {
@@ -12,61 +14,16 @@ interface CourseProps {
 }
 
 export default function CoursesShowcase({ onEnrollClick }: CourseProps) {
-  const { t } = useTranslation()
-  const [selectedLanguage, setSelectedLanguage] = useState("russian")
+  const { t, i18n } = useTranslation()
+  const [selectedCourseId, setSelectedCourseId] = useState<number | null>(null)
+  const { courses, isLoading } = useCourses()
 
-  const languages = [
-    { id: "russian", name: t("courses.russian"), icon: "🇷🇺", color: "bg-red-100" },
-    { id: "english", name: t("courses.english"), icon: "🇬🇧", color: "bg-blue-100" },
-    { id: "turkish", name: t("courses.turkish"), icon: "🇹🇷", color: "bg-red-100" },
-    { id: "arabic", name: t("courses.arabic"), icon: "🇸🇦", color: "bg-green-100" },
-    { id: "korean", name: t("courses.korean"), icon: "🇰🇷", color: "bg-blue-100" },
-  ]
-
-  const courseData = {  
-    basic: {
-      title: t("courses.basicCourse"),
-      duration: "1-3",
-      level: "A1-A2",
-      price: "300.000",
-      features: [
-        "Individual approach",
-        "Learning materials included",
-        "Weekly progress tests",
-        "Certificate upon completion",
-      ],
-    },
-    standard: {
-      title: t("courses.standardCourse"),
-      duration: "3-6",
-      level: "B1-B2",
-      price: "600.000",
-      features: [
-        "Individual approach",
-        "Learning materials included",
-        "Weekly progress tests",
-        "Certificate upon completion",
-        "Speaking club access",
-        "Online resources",
-      ],
-    },
-    advanced: {
-      title: t("courses.advancedCourse"),
-      duration: "6-12",
-      level: "C1-C2",
-      price: "1.000.000",
-      features: [
-        "Individual approach",
-        "Learning materials included",
-        "Weekly progress tests",
-        "Certificate upon completion",
-        "Speaking club access",
-        "Online resources",
-        "Native speaker sessions",
-        "Exam preparation",
-      ],
-    },
-  }
+  // Set first course as default when courses are loaded
+  useEffect(() => {
+    if (courses && courses.length > 0 && !selectedCourseId) {
+      setSelectedCourseId(courses[0].id)
+    }
+  }, [courses])
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -89,172 +46,130 @@ export default function CoursesShowcase({ onEnrollClick }: CourseProps) {
     },
   }
 
-  // Get the current language flag
-  const getCurrentLanguageFlag = () => {
-    const lang = languages.find((l) => l.id === selectedLanguage)
-    return lang ? lang.icon : "🌐"
+  const getLocalizedName = (course: any) => {
+    return i18n.language === 'ru' ? course.name_ru : course.name_uz
+  }
+
+  const getLocalizedTitle = (level: any) => {
+    return i18n.language === 'ru' ? level.title_ru : level.title_uz
+  }
+
+  const getLocalizedFeatures = (level: any) => {
+    return i18n.language === 'ru' ? level.features_ru : level.features_uz
+  }
+
+  const selectedCourse = courses?.find(course => course.id === selectedCourseId)
+
+  const LoadingSkeleton = () => (
+    <>
+      {/* Course Selection Skeleton */}
+      <div className="flex flex-wrap justify-center gap-3 mb-10">
+        {[1, 2, 3].map((i) => (
+          <Skeleton key={i} className="h-10 w-32 rounded-full" />
+        ))}
+      </div>
+
+      {/* Course Levels Skeleton */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {[1, 2, 3].map((i) => (
+          <div key={i} className="bg-white rounded-xl p-5 border border-gray-100">
+            <Skeleton className="h-8 w-3/4 mb-4" />
+            <Skeleton className="h-6 w-1/4 mb-4" />
+            <div className="space-y-2 mb-6">
+              {[1, 2, 3, 4].map((j) => (
+                <Skeleton key={j} className="h-4 w-full" />
+              ))}
+            </div>
+            <div className="flex justify-between items-center">
+              <Skeleton className="h-8 w-24" />
+              <Skeleton className="h-10 w-32" />
+            </div>
+          </div>
+        ))}
+      </div>
+    </>
+  )
+
+  if (isLoading) {
+    return (
+      <div className="w-full">
+        <LoadingSkeleton />
+      </div>
+    )
   }
 
   return (
     <div className="w-full">
-      {/* Language Selection */}
+      {/* Course Selection */}
       <div className="flex flex-wrap justify-center gap-3 mb-10">
-        {languages.map((lang) => (
+        {courses?.map((course) => (
           <button
-            key={lang.id}
-            onClick={() => setSelectedLanguage(lang.id)}
-            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${selectedLanguage === lang.id ? "bg-[#7635E9] text-white shadow-md" : "bg-gray-100 hover:bg-gray-200"
+            key={course.id}
+            onClick={() => setSelectedCourseId(course.id)}
+            className={`flex items-center gap-2 px-4 py-2 rounded-full transition-all ${selectedCourseId === course.id ? "bg-[#7635E9] text-white shadow-md" : "bg-gray-100 hover:bg-gray-200"
               }`}
           >
-            <span>{lang.icon}</span>
-            <span>{lang.name}</span>
+            <span>{getLocalizedName(course)}</span>
           </button>
         ))}
       </div>
 
-      {/* Course Cards */}
+      {/* Course Levels */}
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
-        {/* Basic Course */}
-        <motion.div
-          key={`${selectedLanguage}-basic`}
-          variants={itemVariants}
-          className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
-        >
-          <div className="p-5 relative flex flex-col justify-between h-full">
-            {/* Flag in corner */}
-            <div>
-              <div className="absolute top-3 right-3 text-2xl">{getCurrentLanguageFlag()}</div>
-
-              <h3 className="text-xl font-bold text-[#010088] mb-2">{courseData.basic.title}</h3>
-              <div className="flex items-center gap-2 mb-4">
-                <Badge className="bg-[#7635E9]">{courseData.basic.level}</Badge>
-                <div className="flex items-center gap-1 text-gray-600 text-sm">
-                  <Clock className="h-4 w-4" />
-                  <span>
-                    {courseData.basic.duration} {t("courses.months")}
-                  </span>
-                </div>
-              </div>
-
-              <ul className="space-y-2 mb-6">
-                {courseData.basic.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-            </div>
-            <div className="flex justify-between items-center">
+        {selectedCourse?.levels.map((level) => (
+          <motion.div
+            key={level.id}
+            variants={itemVariants}
+            className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
+          >
+            <div className="p-5 relative flex flex-col justify-between h-full">
               <div>
-                <p className="text-sm text-gray-500">{t("courses.from")}</p>
-                <p className="text-xl font-bold text-[#010088]">{courseData.basic.price} сум</p>
-              </div>
-              <Button onClick={onEnrollClick} className="bg-[#7635E9] hover:bg-[#6525D9] flex items-center gap-1">
-                {t("courses.enrollButton")}
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Standard Course */}
-        <motion.div
-          key={`${selectedLanguage}-standard`}
-          variants={itemVariants}
-          className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100 relative"
-        >
-
-
-          <div className="p-5 relative flex flex-col justify-between h-full">
-            {/* Flag in corner */}
-            <div>
-              <div className="absolute top-3 right-3 text-2xl">{getCurrentLanguageFlag()}</div>
-
-              <h3 className="text-xl font-bold text-[#010088] mb-2">{courseData.standard.title}</h3>
-              <div className="flex items-center gap-2 mb-4">
-                <Badge className="bg-[#7635E9]">{courseData.standard.level}</Badge>
-                <div className="flex items-center gap-1 text-gray-600 text-sm">
-                  <Clock className="h-4 w-4" />
-                  <span>
-                    {courseData.standard.duration} {t("courses.months")}
-                  </span>
+                <h3 className="text-xl font-bold text-[#010088] mb-2">
+                  {getLocalizedTitle(level)}
+                </h3>
+                <div className="flex items-center gap-2 mb-4">
+                  <Badge className="bg-[#7635E9]">{level.level}</Badge>
+                  <div className="flex items-center gap-1 text-gray-600 text-sm">
+                    <Clock className="h-4 w-4" />
+                    <span>
+                      {level.duration_months} {t("courses.months")}
+                    </span>
+                  </div>
                 </div>
+
+                <ul className="space-y-2 mb-6">
+                  {getLocalizedFeatures(level).map((feature: string, index: number) => (
+                    <li key={index} className="flex items-start gap-2">
+                      <Check className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
+                      <span className="text-sm">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <ul className="space-y-2 mb-6">
-                {courseData.standard.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
-            </div>
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-sm text-gray-500">{t("courses.from")}</p>
-                <p className="text-xl font-bold text-[#010088]">{courseData.standard.price} сум</p>
-              </div>
-              <Button onClick={onEnrollClick} className="bg-[#7635E9] hover:bg-[#6525D9] flex items-center gap-1">
-                {t("courses.enrollButton")}
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
-
-        {/* Advanced Course */}
-        <motion.div
-          key={`${selectedLanguage}-advanced`}
-          variants={itemVariants}
-          className="bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100"
-        >
-          <div className="p-5 relative flex flex-col justify-between h-full">
-            {/* Flag in corner */}
-            <div>
-              <div className="absolute top-3 right-3 text-2xl">{getCurrentLanguageFlag()}</div>
-
-              <h3 className="text-xl font-bold text-[#010088] mb-2">{courseData.advanced.title}</h3>
-              <div className="flex items-center gap-2 mb-4">
-                <Badge className="bg-[#7635E9]">{courseData.advanced.level}</Badge>
-                <div className="flex items-center gap-1 text-gray-600 text-sm">
-                  <Clock className="h-4 w-4" />
-                  <span>
-                    {courseData.advanced.duration} {t("courses.months")}
-                  </span>
+              <div className="flex justify-between items-center">
+                <div>
+                  <p className="text-sm text-gray-500">{t("courses.from")}</p>
+                  <p className="text-xl font-bold text-[#010088]">
+                    {Number(level.price).toLocaleString()} сум
+                  </p>
                 </div>
+                <Button
+                  onClick={onEnrollClick}
+                  className="bg-[#7635E9] hover:bg-[#6525D9] flex items-center gap-1"
+                >
+                  {t("courses.enrollButton")}
+                  <ChevronRight className="h-4 w-4" />
+                </Button>
               </div>
-
-              <ul className="space-y-2 mb-6">
-                {courseData.advanced.features.map((feature, index) => (
-                  <li key={index} className="flex items-start gap-2">
-                    <Check className="h-4 w-4 text-green-500 mt-1 flex-shrink-0" />
-                    <span className="text-sm">{feature}</span>
-                  </li>
-                ))}
-              </ul>
-
             </div>
-            <div className="flex justify-between items-center">
-              <div>
-                <p className="text-sm text-gray-500">{t("courses.from")}</p>
-                <p className="text-xl font-bold text-[#010088]">{courseData.advanced.price} сум</p>
-              </div>
-              <Button onClick={onEnrollClick} className="bg-[#7635E9] hover:bg-[#6525D9] flex items-center gap-1">
-                {t("courses.enrollButton")}
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-            </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        ))}
       </motion.div>
 
       {/* Course Benefits */}

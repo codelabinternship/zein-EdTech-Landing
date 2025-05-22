@@ -68,7 +68,11 @@
     "description": "Bizning ta'lim botimiz bilan bilimingizni tekshiring va natijalaringizni yaxshilang",
     "openBot": "Botni ochish",
     "learnMore": "Batafsil ma'lumot",
-    "tryBot": "Botni sinab ko'rish"
+    "tryBot": "Botni sinab ko'rish",
+    "feature1": "Test topshirish uchun tilni tanlash",
+    "feature2": "Kviz uchun fan tanlash",
+    "feature3": "Savollar sonini tanlash",
+    "feature4": "Natijalarni foiz va ballarda baholash"
   },
   "contactForm": {
     "title": "Biz bilan bog'lanish",

@@ -15,12 +15,10 @@ export function useFAQs(language: string) {
     isLoading,
     error,
   } = useQuery<FAQ[], Error>({
-    queryKey: ["faq", language],
+    queryKey: ["faqs", language],
     queryFn: async () => {
-      const res = await api.get("/faqs/", {
-        params: { lang: language },
-      });
-      return res.data[language]; // backend returns { lang: [...] }
+      const res = await api.get(`/faqs/?lang=${language}`);
+      return res.data;
     },
   });
 

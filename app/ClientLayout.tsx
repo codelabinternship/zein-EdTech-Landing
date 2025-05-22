@@ -7,6 +7,7 @@ import type React from "react"
 import { useEffect } from "react"
 import { I18nextProvider } from "react-i18next"
 import "./globals.css"
+import SEO from "./seo"
 
 export default function ClientLayout({
   children,
@@ -26,13 +27,12 @@ export default function ClientLayout({
 
   return (
     <I18nextProvider i18n={i18n}>
-       <QueryProvider>
-
-      <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-        {children}
-      </ThemeProvider>
-       </QueryProvider>
-
+      <QueryProvider>
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
+          <SEO />
+          {children}
+        </ThemeProvider>
+      </QueryProvider>
     </I18nextProvider>
   )
 }
