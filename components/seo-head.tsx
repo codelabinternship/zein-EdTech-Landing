@@ -12,7 +12,7 @@ export default function SEOHead() {
 
   return (
     <Head>
-      <title>{seo.metaTitle}</title>
+      <title>{seo.metaTitle||"zeinedtech.uz"}</title>
       <meta name="description" content={seo.metaDescription} />
       <meta name="keywords" content={seo.keywords} />
 
