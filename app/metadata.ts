@@ -1,6 +1,9 @@
-import type { Metadata } from "next"
+  import type { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: "ZEIN EDTECH - Центр изучения иностранных языков",
-  description: "Обучаем иностранным языкам с 2013 года. Русский, Английский, Турецкий, Арабский, Корейский языки.",
-}
+  export const metadata: Metadata = {
+    title: "ZEIN EDTECH - Центр изучения иностранных языков",
+    description: "Обучаем иностранным языкам с 2013 года. Русский, Английский, Турецкий, Арабский, Корейский языки.",
+    verification: {
+      google: 'eUJyGjZpPbGoAnABZtokjQLdCNPJfWbSwtUYNDmXoHs',
+    },
+  }
