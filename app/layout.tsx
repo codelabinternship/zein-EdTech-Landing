@@ -10,6 +10,7 @@ export default function RootLayout({
     <html lang="ru" suppressHydrationWarning>
       <head>
         <link rel="icon" href="/favicon.ico" />
+         <meta name="google-site-verification" content="eUJyGjZpPbGoAnABZtokjQLdCNPJfWbSwtUYNDmXoHs" />
       </head>
       <body>
         <ClientLayout>{children}</ClientLayout>
