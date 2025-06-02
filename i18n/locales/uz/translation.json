@@ -9,8 +9,9 @@
   },
   "hero": {
     "title": "ZEIN EDTECH",
-    "subtitle": "2013 yildan beri chet tillarini o'rgatamiz",
-    "description": "2013 da tashkil topgan bo'lib asosan til kurslarini o'rgatish bo'yicha faoliyat olib boradi",
+    "subtitle": "Zein EdTech ga xush kelibsiz",
+    "subtitle_name": "",
+    "description": "Bizning o‘quv markazimiz 2013-yilda tashkil etilgan bo‘lib, Toshkent markazida joylashgan. Qulaylik va sifat – bizning ustuvor yo‘nalishimiz! O‘quv markazimiz zamonaviy texnologiyalar bilan jihozlangan, darslar esa eng malakali o‘qituvchilar tomonidan olib boriladi.",
     "enrollButton": "Kursga yozilish",
     "learnMoreButton": "Batafsil ma'lumot"
   },
@@ -70,8 +71,8 @@
     "learnMore": "Batafsil ma'lumot",
     "tryBot": "Botni sinab ko'rish",
     "feature1": "Test topshirish uchun tilni tanlash",
-    "feature2": "Kviz uchun fan tanlash",
-    "feature3": "Savollar sonini tanlash",
+    "feature2": "Quiz uchun fan tanlash",
+    "feature3": "Savollar mavzusini tanlash",
     "feature4": "Natijalarni foiz va ballarda baholash"
   },
   "contactForm": {

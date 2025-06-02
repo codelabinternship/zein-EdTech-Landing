@@ -195,7 +195,7 @@ export default function Home() {
               </div>
 
               <Button className="bg-[#7635E9] hover:bg-[#6525D9]">
-                <Link href="https://t.me/ZEIN_edtech_bot" target="_blank" className="flex items-center gap-2">
+                <Link href="https://t.me/quiz_zein_bot" target="_blank" className="flex items-center gap-2">
                   <MessageCircle size={18} />
                   {t("telegramBot.openBot")}
                 </Link>
@@ -234,9 +234,7 @@ export default function Home() {
                     <div className="flex justify-start">
                       <div className="flex items-end gap-2 max-w-[85%] group">
                         <div className="bg-white px-3 py-2 rounded-tl-lg rounded-tr-lg rounded-br-lg shadow-sm">
-                          <p className="text-[14.5px] text-[#232323] font-normal leading-[1.4] whitespace-pre-line">Welcome to ZEIN.UZ bot!
-                            Please select a language:
-
+                          <p className="text-[14.5px] text-[#232323] font-normal leading-[1.4] whitespace-pre-line">
                             ZEIN.UZ botiga xush kelibsiz!
                             Iltimos, tilni tanlang:
 
@@ -247,15 +245,12 @@ export default function Home() {
                     </div>
 
                     {/* Bot Buttons */}
-                    <div className="flex flex-col items-start gap-1">
+                    <div className="flex  items-start gap-1">
                       <button className="bg-white w-auto px-4 py-[6px] rounded-md hover:bg-[#F8F9FA] transition-colors text-[14.5px] text-[#232323] font-normal shadow-sm">
                         🇺🇿 O'zbek
                       </button>
                       <button className="bg-white w-auto px-4 py-[6px] rounded-md hover:bg-[#F8F9FA] transition-colors text-[14.5px] text-[#232323] font-normal shadow-sm">
                         🇷🇺 Русский
-                      </button>
-                      <button className="bg-white w-auto px-4 py-[6px] rounded-md hover:bg-[#F8F9FA] transition-colors text-[14.5px] text-[#232323] font-normal shadow-sm">
-                        🇬🇧 English
                       </button>
                     </div>
                   </div>

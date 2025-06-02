@@ -9,8 +9,8 @@ import { useEffect, useState } from "react"
 import { useTranslation } from "react-i18next"
 
 const languages = [
-  { code: "ru", name: "Русский", flag: "https://flagcdn.com/w40/ru.png" },
-  { code: "uz", name: "O'zbek", flag: "https://flagcdn.com/w40/uz.png" },
+  { code: "ru", name: "Русский", flag: "/language-images/ru.png" },
+  { code: "uz", name: "O'zbek", flag: "/language-images/uz.png" },
 ]
 
 export default function Header({ phone }: { phone: string }) {
