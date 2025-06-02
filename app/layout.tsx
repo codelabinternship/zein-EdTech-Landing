@@ -11,6 +11,7 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
          <meta name="google-site-verification" content="eUJyGjZpPbGoAnABZtokjQLdCNPJfWbSwtUYNDmXoHs" />
+         <meta name="yandex-verification" content="79c50c53d0062032" />
       </head>
       <body>
         <ClientLayout>{children}</ClientLayout>
