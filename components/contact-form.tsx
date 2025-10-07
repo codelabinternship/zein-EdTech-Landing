@@ -10,6 +10,40 @@ import { AlertCircle, CheckCircle } from "lucide-react"
 import React, { useState } from "react"
 import { useTranslation } from "react-i18next"
 
+const UZBEK_COUNTRY_CODE = "998"
+const UZBEK_COUNTRY_PREFIX = `+${UZBEK_COUNTRY_CODE}`
+
+const formatUzbekPhone = (value: string) => {
+  const digitsOnly = value.replace(/\D/g, "")
+
+  if (!digitsOnly) {
+    return ""
+  }
+
+  let localDigits: string
+  if (digitsOnly.startsWith(UZBEK_COUNTRY_CODE)) {
+    localDigits = digitsOnly.slice(UZBEK_COUNTRY_CODE.length)
+  } else if (digitsOnly.startsWith("8")) {
+    localDigits = digitsOnly.slice(1)
+  } else {
+    localDigits = digitsOnly
+  }
+
+  const limitedLocalDigits = localDigits.slice(0, 9)
+  const segments = [
+    limitedLocalDigits.slice(0, 2),
+    limitedLocalDigits.slice(2, 5),
+    limitedLocalDigits.slice(5, 7),
+    limitedLocalDigits.slice(7, 9),
+  ].filter(Boolean)
+
+  if (segments.length === 0) {
+    return `${UZBEK_COUNTRY_PREFIX} `
+  }
+
+  return `${UZBEK_COUNTRY_PREFIX} ${segments.join(" ")}`
+}
+
 export default function ContactForm() {
   const { t } = useTranslation()
   const [name, setName] = useState("")
@@ -68,7 +102,27 @@ export default function ContactForm() {
               id="phone"
               type="tel"
               value={phone}
-              onChange={(e) => setPhone(e.target.value)}
+              onChange={(e) => {
+                const { value } = e.target
+                if (!value) {
+                  setPhone("")
+                  return
+                }
+                setPhone(formatUzbekPhone(value))
+              }}
+              onFocus={() => {
+                setPhone((current) => (current ? current : `${UZBEK_COUNTRY_PREFIX} `))
+              }}
+              onBlur={() => {
+                setPhone((current) => {
+                  if (!current) {
+                    return current
+                  }
+
+                  const digitsOnly = current.replace(/\D/g, "")
+                  return digitsOnly.length > UZBEK_COUNTRY_CODE.length ? current : ""
+                })
+              }}
               required
               placeholder="+998 XX XXX XX XX"
             />
